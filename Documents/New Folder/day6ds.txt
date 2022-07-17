@@ -1,0 +1,440 @@
+// You are using GCC
+2)
+#include<stdio.h>
+#include<stdlib.h>
+void insert_at_beg();
+void insert();
+void display();
+void insertAtBeginning();
+struct node
+{
+	int data;
+	struct node *next;
+	struct node *prev;
+};
+struct node *head;
+int main()
+{
+	int i=0,n;
+	scanf("%d",&n);
+	while(i<n)
+	{
+		insert();
+		i++;
+	}
+	insertAtBeginning();
+	display();
+}
+void insert()
+{
+	
+	struct node * newnode;
+	newnode->next=NULL;
+	newnode->prev=NULL;
+	newnode=(struct node *)malloc(sizeof(struct node));
+	if(newnode==NULL)
+	{
+		printf("invalid");
+	}
+	else
+	{
+		scanf("%d",&newnode->data);
+		newnode->next=NULL;
+		if(head==NULL)
+		{
+			head=newnode;
+		}
+		else
+		{
+			struct node *p;
+			p=head;
+			while(p->next!=NULL)
+			{
+				p=p->next;
+			}
+			p->next=newnode;
+		}	
+	}	
+}
+void insertAtBeginning()
+{
+    struct node * newNode;
+
+    if(head == NULL)
+    {
+        printf("Error, List is Empty!\n");
+    }
+    else
+    {
+        int data;
+        newNode = (struct node *)malloc(sizeof(struct node));
+        scanf("%d",&data);
+        newNode->data = data;
+        newNode->next = head;
+        newNode->prev = NULL;
+        head->prev = newNode;
+        head = newNode;
+    }
+}
+void display()
+
+{
+	struct node *p;
+	p=head;
+	while(p!=NULL)
+	{
+		printf("%d ",p->data);
+		p=p->next;
+	}
+}
+
+
+3)
+// You are using GCC
+#include<stdio.h>
+#include<stdlib.h>
+void insert_at_beg();
+void insert();
+void display();
+void insertAtend();
+struct node
+{
+	int data;
+	struct node *next;
+	struct node *prev;
+};
+struct node *head;
+int main()
+{
+	int i=0,n;
+	scanf("%d",&n);
+	while(i<n)
+	{
+		insert();
+		i++;
+	}
+	insertAtend();
+	display();
+}
+void insert()
+{
+	
+	struct node * newnode;
+	newnode->next=NULL;
+	newnode->prev=NULL;
+	newnode=(struct node *)malloc(sizeof(struct node));
+	if(newnode==NULL)
+	{
+		printf("invalid");
+	}
+	else
+	{
+		scanf("%d",&newnode->data);
+		newnode->next=NULL;
+		if(head==NULL)
+		{
+			head=newnode;
+		}
+		else
+		{
+			struct node *p;
+			p=head;
+			while(p->next!=NULL)
+			{
+				p=p->next;
+			}
+			p->next=newnode;
+		}	
+	}	
+}
+void insertAtend()
+{
+struct node* newnode;
+newnode = (struct node*) malloc (sizeof(struct node));
+scanf("%d",&newnode->data);
+newnode->prev=NULL;
+newnode->next=NULL;
+if(head==NULL)
+{
+	head=newnode;
+}
+else
+{
+    struct node* p;
+    p=head;
+    while(p->next!=NULL)
+   {
+     p=p->next;
+   }
+   p->next=newnode;
+   newnode->prev=p;
+}
+}
+
+
+void display()
+
+{
+	struct node *p;
+	p=head;
+	while(p!=NULL)
+	{
+		printf("%d ",p->data);
+		p=p->next;
+	}
+}
+
+
+//5
+// You are using GCC
+#include<stdio.h>
+#include<stdlib.h>
+void insert_at_beg();
+void insert();
+void display();
+void del();
+struct node
+{
+	int data;
+	struct node *next;
+	struct node *prev;
+};
+struct node *head;
+int main()
+{
+	int i=0,n;
+	scanf("%d",&n);
+	while(i<n)
+	{
+		insert();
+		i++;
+	}
+	del();
+	display();
+}
+void insert()
+{
+	
+	struct node * newnode;
+	newnode->next=NULL;
+	newnode->prev=NULL;
+	newnode=(struct node *)malloc(sizeof(struct node));
+	if(newnode==NULL)
+	{
+		printf("invalid");
+	}
+	else
+	{
+		scanf("%d",&newnode->data);
+		newnode->next=NULL;
+		if(head==NULL)
+		{
+			head=newnode;
+		}
+		else
+		{
+			struct node *p;
+			p=head;
+			while(p->next!=NULL)
+			{
+				p=p->next;
+			}
+			p->next=newnode;
+		}	
+	}	
+}
+void del()
+{
+    struct node *temp; 
+  temp=head;
+   head=temp->next; 
+   temp->next->prev=NULL;
+   temp->next=NULL; 
+   free(temp);
+
+}
+void display()
+
+{
+	struct node *p;
+	p=head;
+	while(p!=NULL)
+	{
+		printf("%d ",p->data);
+		p=p->next;
+	}
+}
+
+/***************************************************************************************************/
+day 7
+1))
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int num;
+    struct node * nextptr;
+}*stnode;
+
+void ClListcreation(int n);
+void ClLinsertNodeAtBeginning(int num);
+void displayClList(int a);
+
+int main()
+{
+    int n,num1,a;
+    stnode = NULL;
+    scanf("%d", &n);
+    ClListcreation(n);
+    scanf("%d", &num1);
+    ClLinsertNodeAtBeginning(num1);
+    a=2;
+    displayClList(a);	
+    return 0;
+}
+
+void ClListcreation(int n)
+{
+    int i, num;
+    struct node *preptr, *newnode;
+
+    if(n >= 1)
+    {
+        stnode = (struct node *)malloc(sizeof(struct node));
+        scanf("%d", &num);
+        stnode->num = num;
+        stnode->nextptr = NULL;
+        preptr = stnode;
+        for(i=2; i<=n; i++)
+        {
+            newnode = (struct node *)malloc(sizeof(struct node));
+            scanf("%d", &num);
+            newnode->num = num;
+            newnode->nextptr = NULL;	// next address of new node set as NULL
+            preptr->nextptr = newnode;	// previous node is linking with new node
+            preptr = newnode;   		// previous node is advanced
+        }
+        preptr->nextptr = stnode; 		//last node is linking with first node
+    }
+}
+
+void ClLinsertNodeAtBeginning(int num)
+{
+    struct node *newnode, *curNode;
+    if(stnode == NULL)
+    {
+        printf(" No data found in the List yet.");
+    }
+    else
+    {
+        newnode = (struct node *)malloc(sizeof(struct node));
+        newnode->num = num;
+        newnode->nextptr = stnode;
+        curNode = stnode;
+        while(curNode->nextptr != stnode)
+        {
+            curNode = curNode->nextptr;
+        }
+        curNode->nextptr = newnode;
+        stnode = newnode;
+    }
+}
+void displayClList(int m)
+{
+    struct node *tmp;
+    int n = 1;
+
+    if(stnode == NULL)
+    {
+        printf(" No data found in the List yet.");
+    }
+    else
+    {
+        do {
+            printf("%d ", tmp->num);
+            tmp = tmp->nextptr;
+            n++;
+        }while(tmp != stnode);
+    }
+}
+
+
+
+2)))
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int num;
+    struct node * nextptr;
+}*stnode;
+
+struct node *tail,*p,*q,*store; 
+
+void ClListcreation(int n);
+void ClListDeleteFirstNode();
+void displayClList(int a);
+
+int main()
+{
+    int n,num1,a,insPlc;
+    stnode = NULL;
+    scanf("%d", &n);
+    ClListcreation(n);
+    ClListDeleteFirstNode();  	
+    a=2;
+    displayClList(a);	
+    return 0;
+}
+
+void ClListcreation(int n)
+{
+    int i, num;
+    struct node *preptr, *newnode;
+
+    if(n >= 1)
+    {
+        stnode = (struct node *)malloc(sizeof(struct node));
+        scanf("%d", &num);
+        stnode->num = num;
+        stnode->nextptr = NULL;
+        preptr = stnode;
+        for(i=2; i<=n; i++)
+        {
+            newnode = (struct node *)malloc(sizeof(struct node));
+            scanf("%d", &num);
+            newnode->num = num;
+            newnode->nextptr = NULL;	
+            preptr->nextptr = newnode;	
+            preptr = newnode;   		
+        preptr->nextptr = stnode; 	
+    }
+}
+}
+
+void ClListDeleteFirstNode()
+{
+		p=stnode;
+		while(p->nextptr!=stnode)
+		{
+			p=p->nextptr;
+		}
+		store=stnode;
+		stnode=stnode->nextptr;
+		p->nextptr=stnode;
+		free (store);
+}
+
+void displayClList(int m)
+{
+    struct node *tmp;
+    int n = 1;
+        tmp = stnode;
+        do {
+            printf("%d ",tmp->num);
+
+            tmp = tmp->nextptr;
+            n++;
+        }while(tmp != stnode);
+}

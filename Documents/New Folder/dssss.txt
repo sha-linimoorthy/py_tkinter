@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<stdlib.h>
+void insert();
+void insert_beg();
+void display();
+struct node 
+{
+	int data;
+	struct node * next;
+};
+struct node * head;
+int main()
+{
+	int i=1,n;
+	scanf("%d",&n);
+	while(i<=n)
+	{
+		insert();
+		i++;
+	}
+	insert_beg();
+}
+void insert()
+{
+	
+	struct node * newnode;
+	newnode=(struct node *)malloc(sizeof(struct node));
+	if(newnode==NULL)
+	{
+		printf("invalid");
+	}
+	else
+	{
+		scanf("%d",&newnode->data);
+		newnode->next=NULL;
+		if(head==NULL)
+		{
+			head=newnode;
+		}
+		else
+		{
+			struct node *p;
+			p=head;w
+			while(p->next!=NULL)
+			{
+				p=p->next;
+			}
+			p->next=newnode;
+		}	
+	}	
+}
+void insert_beg()
+{
+    struct node *newnode;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&newnode->data);
+    if(head==NULL)
+    {
+        head=newnode;
+    }
+    else
+    {
+        newnode->next=head;
+        head=newnode;
+    }
+    display();
+}
+void display()
+{
+    struct node * p;
+    p=head;
+    while(p!=NULL)
+    {
+        printf("%d ",p->data);
+        p=p->next;
+    }
+}

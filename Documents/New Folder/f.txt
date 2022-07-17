@@ -1,0 +1,1 @@
+	printf("Total rainfall : %d\nAverage rainfall : %d\nLowest rainfall month : %d\nHighest rainfall month : %d",sum,avg,min+1,max+1);
